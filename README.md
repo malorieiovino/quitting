@@ -2,7 +2,6 @@
 
 A beautiful, interactive sobriety tracker that you can embed in Notion, personal websites, or other platforms to celebrate your journey.
 
-![Sobriety Tracker Screenshot](https://user-images.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/raw/main/screenshot.png)
 
 ## ✨ Features
 
