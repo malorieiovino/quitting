@@ -23,7 +23,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.2s ease;
         }
         
         body {
@@ -131,18 +130,6 @@
             margin-top: 0.5rem;
         }
         
-        .glow-effect {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
-            opacity: 0.5;
-            z-index: 1;
-            filter: blur(20px);
-        }
-        
         .progress-container {
             width: 100%;
             margin: 1.5rem 0;
@@ -167,22 +154,6 @@
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .progress-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 30px;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
-            animation: glowMove 2s infinite;
-            opacity: 0.5;
-        }
-        
-        @keyframes glowMove {
-            0% { left: -30px; }
-            100% { left: 100%; }
-        }
-        
         .milestone-container {
             min-height: 50px;
             display: flex;
@@ -202,13 +173,6 @@
             align-items: center;
             gap: 0.5rem;
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
         }
         
         .achievements {
@@ -232,49 +196,6 @@
             font-size: 1.2rem;
             position: relative;
             cursor: pointer;
-        }
-        
-        .achievement:before {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-bottom: 10px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s ease;
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        .achievement:after {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s ease;
-            pointer-events: none;
-            margin-bottom: -5px;
-            z-index: 10;
-        }
-        
-        .achievement:hover:before,
-        .achievement:hover:after {
-            opacity: 1;
-            visibility: visible;
         }
         
         .achievement.unlocked {
@@ -318,10 +239,6 @@
             box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
         }
         
-        .button-primary:active {
-            transform: translateY(0);
-        }
-        
         .button-danger {
             background-color: rgba(239, 68, 68, 0.1);
             color: var(--danger);
@@ -332,10 +249,6 @@
             background-color: rgba(239, 68, 68, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
-        }
-        
-        .button-danger:active {
-            transform: translateY(0);
         }
         
         .stats-container {
@@ -353,7 +266,6 @@
             flex-direction: column;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease;
         }
         
         .stat-card:hover {
@@ -408,68 +320,6 @@
             opacity: 0.5;
         }
         
-        .confetti {
-            position: absolute;
-            z-index: 1000;
-            width: 10px;
-            height: 10px;
-            opacity: 0;
-            animation: confettiFall linear forwards;
-        }
-        
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100%) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(1000%) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Interactive Elements */
-        .streak-number {
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        
-        .streak-number:hover {
-            transform: scale(1.05);
-            color: var(--highlight);
-        }
-        
-        .streak-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary-dark), var(--primary));
-            border-radius: 0 0 16px 16px;
-        }
-        
-        .wave::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            animation: waveAnimation 2s infinite ease-in-out;
-        }
-        
-        @keyframes waveAnimation {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
-        
         @media (max-width: 640px) {
             .streak-number {
                 font-size: 5rem;
@@ -507,7 +357,6 @@
             <div class="card-header">
                 <div class="streak-counter">
                     <div class="streak-number" id="streak">0</div>
-                    <div class="glow-effect"></div>
                     <p class="streak-label">Clean & Strong</p>
                 </div>
             </div>
@@ -515,28 +364,26 @@
             <div class="card-body">
                 <div class="progress-container">
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill">
-                            <div class="progress-glow"></div>
-                        </div>
+                        <div class="progress-fill" id="progress-fill"></div>
                     </div>
                 </div>
                 
                 <div class="milestone-container" id="milestone-container"></div>
                 
                 <div class="achievements">
-                    <div class="achievement" id="achievement-1-day" data-tooltip="1 Day">
+                    <div class="achievement" id="achievement-1-day" title="1 Day">
                         <i class="fas fa-seedling"></i>
                     </div>
-                    <div class="achievement" id="achievement-7-days" data-tooltip="1 Week">
+                    <div class="achievement" id="achievement-7-days" title="1 Week">
                         <i class="fas fa-leaf"></i>
                     </div>
-                    <div class="achievement" id="achievement-30-days" data-tooltip="1 Month">
+                    <div class="achievement" id="achievement-30-days" title="1 Month">
                         <i class="fas fa-tree"></i>
                     </div>
-                    <div class="achievement" id="achievement-90-days" data-tooltip="3 Months">
+                    <div class="achievement" id="achievement-90-days" title="3 Months">
                         <i class="fas fa-mountain"></i>
                     </div>
-                    <div class="achievement" id="achievement-365-days" data-tooltip="1 Year">
+                    <div class="achievement" id="achievement-365-days" title="1 Year">
                         <i class="fas fa-award"></i>
                     </div>
                 </div>
@@ -552,8 +399,6 @@
                     </button>
                 </div>
             </div>
-            
-            <div class="wave"></div>
         </div>
         
         <div class="stats-container">
@@ -576,186 +421,161 @@
         <div class="quote-container">
             <div class="quote">
                 <i class="fas fa-quote-left"></i>
-                <p id="motivational-quote"></p>
+                <p id="motivational-quote">Every day is a new opportunity to grow stronger and become a better version of yourself.</p>
             </div>
         </div>
     </div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elements
-            const streakElement = document.getElementById('streak');
-            const progressFill = document.getElementById('progress-fill');
-            const milestoneContainer = document.getElementById('milestone-container');
-            const editButton = document.getElementById('editButton');
-            const resetButton = document.getElementById('resetButton');
-            const longestStreakElement = document.getElementById('longest-streak');
-            const totalDaysElement = document.getElementById('total-days');
-            const quoteElement = document.getElementById('motivational-quote');
-            
-            // Achievement elements
-            const achievement1Day = document.getElementById('achievement-1-day');
-            const achievement7Days = document.getElementById('achievement-7-days');
-            const achievement30Days = document.getElementById('achievement-30-days');
-            const achievement90Days = document.getElementById('achievement-90-days');
-            const achievement365Days = document.getElementById('achievement-365-days');
-            
-            // Milestone definitions
-            const milestones = [
-                { days: 1, message: "First day done! The journey has begun! 🎉", icon: "fas fa-check-circle" },
-                { days: 3, message: "3 days strong! The hardest days are behind you. 💪", icon: "fas fa-bolt" },
-                { days: 7, message: "One week milestone! Your body is healing. 🌱", icon: "fas fa-leaf" },
-                { days: 14, message: "Two weeks of clarity! Brain fog lifting. 🧠", icon: "fas fa-brain" },
-                { days: 21, message: "21 days! New habits forming. 🔄", icon: "fas fa-sync-alt" },
-                { days: 30, message: "ONE MONTH CLEAN! Major achievement! 🏆", icon: "fas fa-trophy" },
-                { days: 60, message: "60 DAYS! You're mastering this! 🔑", icon: "fas fa-key" },
-                { days: 90, message: "90 DAYS! Incredible transformation! 🦋", icon: "fas fa-spa" },
-                { days: 180, message: "HALF A YEAR! You're unstoppable! 🚀", icon: "fas fa-rocket" },
-                { days: 365, message: "ONE FULL YEAR! Legendary status! 👑", icon: "fas fa-crown" }
-            ];
-            
-            // Motivational quotes
-            const quotes = [
-                "Every day is a new opportunity to improve yourself. Take it and make the most of it.",
-                "The struggle you're in today is developing the strength you need for tomorrow.",
-                "Small steps every day lead to big changes over time.",
-                "You are stronger than your strongest excuse.",
-                "Trust the process. Your time is coming.",
-                "The only bad workout is the one that didn't happen.",
-                "Your body hears everything your mind says. Keep going. You can.",
-                "It does not matter how slowly you go as long as you do not stop.",
-                "Don't count the days, make the days count.",
-                "Recovery is not for people who need it. It's for people who want it.",
-                "Rock bottom became the solid foundation on which I rebuilt my life.",
-                "Sometimes you have to go through the worst to get to the best.",
-                "Your current situation is not your final destination.",
-                "Remember why you started.",
-                "Progress not perfection."
-            ];
-            
-            // History of streaks
-            let streakHistory = JSON.parse(localStorage.getItem('streakHistory')) || [];
-            
-            // Load data
-            let startDate = localStorage.getItem('sobrietyStartDate');
-            let streakCount = 0;
-            let longestStreak = parseInt(localStorage.getItem('longestStreak')) || 0;
-            let totalDays = parseInt(localStorage.getItem('totalDays')) || 0;
-            
-            // Set a random quote
-            function setRandomQuote() {
-                const randomIndex = Math.floor(Math.random() * quotes.length);
-                quoteElement.textContent = quotes[randomIndex];
-            }
-            
-            // Create confetti
-            function createConfetti(count = 100, duration = 8) {
-                const colors = ['#4ade80', '#10b981', '#34d399', '#a7f3d0', '#6ee7b7', '#ffffff'];
-                const container = document.querySelector('.container');
-                
-                for (let i = 0; i < count; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    
-                    // Random position, color, size, delay and duration
-                    const left = Math.random() * 100;
-                    const size = Math.random() * 10 + 5;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const delay = Math.random() * 3;
-                    const animationDuration = Math.random() * 2 + duration;
-                    
-                    confetti.style.left = `${left}%`;
-                    confetti.style.width = `${size}px`;
-                    confetti.style.height = `${size}px`;
-                    confetti.style.backgroundColor = color;
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    confetti.style.animationDelay = `${delay}s`;
-                    confetti.style.animationDuration = `${animationDuration}s`;
-                    
-                    container.appendChild(confetti);
-                    
-                    // Remove after animation completes
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, (animationDuration + delay) * 1000);
-                }
-            }
-            
-            // Update achievements based on streak
-            function updateAchievements() {
-                // Reset all
-                achievement1Day.classList.remove('unlocked');
-                achievement7Days.classList.remove('unlocked');
-                achievement30Days.classList.remove('unlocked');
-                achievement90Days.classList.remove('unlocked');
-                achievement365Days.classList.remove('unlocked');
-                
-                // Unlock based on streak
-                if (streakCount >= 1) achievement1Day.classList.add('unlocked');
-                if (streakCount >= 7) achievement7Days.classList.add('unlocked');
-                if (streakCount >= 30) achievement30Days.classList.add('unlocked');
-                if (streakCount >= 90) achievement90Days.classList.add('unlocked');
-                if (streakCount >= 365) achievement365Days.classList.add('unlocked');
-            }
+        // DOM Elements
+        const streakElement = document.getElementById('streak');
+        const progressFill = document.getElementById('progress-fill');
+        const milestoneContainer = document.getElementById('milestone-container');
+        const editButton = document.getElementById('editButton');
+        const resetButton = document.getElementById('resetButton');
+        const longestStreakElement = document.getElementById('longest-streak');
+        const totalDaysElement = document.getElementById('total-days');
+        const quoteElement = document.getElementById('motivational-quote');
+        
+        // Achievement elements
+        const achievement1Day = document.getElementById('achievement-1-day');
+        const achievement7Days = document.getElementById('achievement-7-days');
+        const achievement30Days = document.getElementById('achievement-30-days');
+        const achievement90Days = document.getElementById('achievement-90-days');
+        const achievement365Days = document.getElementById('achievement-365-days');
+        
+        // Milestone definitions with clear milestones
+        const milestones = [
+            { days: 1, message: "First day complete! 🎉", icon: "fas fa-check-circle" },
+            { days: 3, message: "3 days strong! 💪", icon: "fas fa-bolt" },
+            { days: 7, message: "One week milestone! 🌱", icon: "fas fa-leaf" },
+            { days: 14, message: "Two weeks of clarity! 🧠", icon: "fas fa-brain" },
+            { days: 21, message: "21 days! New habits forming. 🔄", icon: "fas fa-sync-alt" },
+            { days: 30, message: "ONE MONTH CLEAN! 🏆", icon: "fas fa-trophy" },
+            { days: 60, message: "60 DAYS! You're mastering this! 🔑", icon: "fas fa-key" },
+            { days: 90, message: "90 DAYS! Incredible transformation! 🦋", icon: "fas fa-spa" },
+            { days: 180, message: "HALF A YEAR! You're unstoppable! 🚀", icon: "fas fa-rocket" },
+            { days: 365, message: "ONE FULL YEAR! Legendary status! 👑", icon: "fas fa-crown" }
+        ];
+        
+        // Motivational quotes
+        const quotes = [
+            "Every day is a new opportunity to improve yourself.",
+            "The struggle you're in today is developing the strength you need for tomorrow.",
+            "Small steps every day lead to big changes over time.",
+            "You are stronger than your strongest excuse.",
+            "Trust the process. Your time is coming.",
+            "Progress not perfection.",
+            "Your body hears everything your mind says. Keep going.",
+            "It does not matter how slowly you go as long as you do not stop.",
+            "Don't count the days, make the days count.",
+            "Recovery is not for people who need it. It's for people who want it.",
+            "Remember why you started."
+        ];
+        
+        // Variables
+        let streakHistory = JSON.parse(localStorage.getItem('streakHistory')) || [];
+        let startDate = localStorage.getItem('sobrietyStartDate');
+        let streakCount = 0;
+        let longestStreak = parseInt(localStorage.getItem('longestStreak')) || 0;
+        let totalDays = parseInt(localStorage.getItem('totalDays')) || 0;
+        
+        // Initialize
+        function init() {
+            // Set random quote
+            setRandomQuote();
             
             // Calculate streak if start date exists
             if (startDate) {
-                const start = new Date(startDate);
-                const today = new Date();
-                
-                // Reset to beginning of day for accurate calculation
-                start.setHours(0, 0, 0, 0);
-                today.setHours(0, 0, 0, 0);
-                
-                // Calculate difference in days
-                const diffTime = today.getTime() - start.getTime();
-                streakCount = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                
-                // Update streak display
+                calculateStreak();
                 updateDisplay();
             }
             
-            // Set random quote on load
-            setRandomQuote();
+            // Add event listeners
+            editButton.addEventListener('click', handleEditDate);
+            resetButton.addEventListener('click', handleReset);
             
-            // Calculate next milestone for progress bar
-            function getNextMilestone() {
+            // Add click handler for achievements for better mobile experience
+            document.querySelectorAll('.achievement').forEach(achievement => {
+                achievement.addEventListener('click', function() {
+                    alert(this.getAttribute('title'));
+                });
+            });
+        }
+        
+        // Set a random quote
+        function setRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteElement.textContent = quotes[randomIndex];
+        }
+        
+        // Calculate streak from start date
+        function calculateStreak() {
+            const start = new Date(startDate);
+            const today = new Date();
+            
+            // Reset to beginning of day for accurate calculation
+            start.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0);
+            
+            // Calculate difference in days
+            const diffTime = today.getTime() - start.getTime();
+            streakCount = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        }
+        
+        // Calculate next milestone for progress bar
+        function getNextMilestone() {
+            const nextMilestone = milestones.find(m => m.days > streakCount);
+            if (nextMilestone) {
+                return nextMilestone.days;
+            }
+            // If beyond all milestones, use 365 or current streak + 30 if > 365
+            return Math.max(365, streakCount + 30);
+        }
+        
+        // Update achievements based on streak
+        function updateAchievements() {
+            // Reset all
+            achievement1Day.classList.remove('unlocked');
+            achievement7Days.classList.remove('unlocked');
+            achievement30Days.classList.remove('unlocked');
+            achievement90Days.classList.remove('unlocked');
+            achievement365Days.classList.remove('unlocked');
+            
+            // Unlock based on streak
+            if (streakCount >= 1) achievement1Day.classList.add('unlocked');
+            if (streakCount >= 7) achievement7Days.classList.add('unlocked');
+            if (streakCount >= 30) achievement30Days.classList.add('unlocked');
+            if (streakCount >= 90) achievement90Days.classList.add('unlocked');
+            if (streakCount >= 365) achievement365Days.classList.add('unlocked');
+        }
+        
+        // Update all display elements
+        function updateDisplay() {
+            // Update streak counter
+            streakElement.textContent = streakCount;
+            
+            // Update progress bar
+            const nextMilestoneDay = getNextMilestone();
+            const progress = Math.min(100, (streakCount / nextMilestoneDay) * 100);
+            progressFill.style.width = `${progress}%`;
+            
+            // Clear previous milestone
+            milestoneContainer.innerHTML = '';
+            
+            // Show exact milestone if it's today
+            const exactMilestone = milestones.find(m => m.days === streakCount);
+            if (exactMilestone) {
+                milestoneContainer.innerHTML = `
+                    <div class="milestone-badge">
+                        <i class="${exactMilestone.icon}"></i>
+                        ${exactMilestone.message}
+                    </div>
+                `;
+            } else {
+                // Otherwise show progress to next milestone
                 const nextMilestone = milestones.find(m => m.days > streakCount);
                 if (nextMilestone) {
-                    return nextMilestone.days;
-                }
-                // If beyond all milestones, use 365 (1 year) or current streak + 30 if > 365
-                return Math.max(365, streakCount + 30);
-            }
-            
-            // Update all display elements
-            function updateDisplay() {
-                streakElement.textContent = streakCount;
-                
-                // Update progress bar
-                const nextMilestoneDay = getNextMilestone();
-                const progress = Math.min(100, (streakCount / nextMilestoneDay) * 100);
-                progressFill.style.width = `${progress}%`;
-                
-                // Check for milestone
-                const exactMilestone = milestones.find(m => m.days === streakCount);
-                const nextMilestone = milestones.find(m => m.days > streakCount);
-                
-                // Clear previous milestone
-                milestoneContainer.innerHTML = '';
-                
-                // Show exact milestone if it's today
-                if (exactMilestone) {
-                    milestoneContainer.innerHTML = `
-                        <div class="milestone-badge">
-                            <i class="${exactMilestone.icon}"></i>
-                            ${exactMilestone.message}
-                        </div>
-                    `;
-                    createConfetti();
-                } 
-                // Otherwise show progress to next milestone
-                else if (nextMilestone) {
                     const daysToNext = nextMilestone.days - streakCount;
                     milestoneContainer.innerHTML = `
                         <div class="milestone-badge">
@@ -764,56 +584,103 @@
                         </div>
                     `;
                 }
-                
-                // Update achievements
-                updateAchievements();
-                
-                // Update stats
-                longestStreakElement.textContent = Math.max(longestStreak, streakCount);
-                totalDaysElement.textContent = totalDays + streakCount;
             }
             
-            // Edit start date button
-            editButton.addEventListener('click', function() {
-                const existingDate = startDate ? new Date(startDate).toISOString().split('T')[0] : '';
-                const newDate = prompt(`Enter your sobriety start date (YYYY-MM-DD):`, existingDate);
+            // Update achievements
+            updateAchievements();
+            
+            // Update stats
+            longestStreakElement.textContent = Math.max(longestStreak, streakCount);
+            totalDaysElement.textContent = totalDays + streakCount;
+        }
+        
+        // Save current streak to history
+        function saveCurrentStreakToHistory() {
+            if (startDate && streakCount > 0) {
+                const oldStart = new Date(startDate);
+                const oldEnd = new Date();
+                oldEnd.setDate(oldEnd.getDate() - 1); // Yesterday
                 
-                if (newDate && isValidDate(newDate)) {
-                    // If there was a previous streak, save it to history
-                    if (startDate && streakCount > 0) {
-                        const oldStart = new Date(startDate);
-                        const oldEnd = new Date();
-                        oldEnd.setDate(oldEnd.getDate() - 1); // Yesterday
-                        
-                        streakHistory.push({
-                            start: oldStart.toISOString().split('T')[0],
-                            end: oldEnd.toISOString().split('T')[0],
-                            days: streakCount
-                        });
-                        
-                        // Update total days
-                        totalDays += streakCount;
-                        localStorage.setItem('totalDays', totalDays);
-                        
-                        // Update longest streak
-                        if (streakCount > longestStreak) {
-                            longestStreak = streakCount;
-                            localStorage.setItem('longestStreak', longestStreak);
-                        }
-                        
-                        // Save history
-                        localStorage.setItem('streakHistory', JSON.stringify(streakHistory));
-                    }
-                    
-                    // Set new start date
-                    startDate = newDate;
-                    localStorage.setItem('sobrietyStartDate', startDate);
-                    
-                    // Recalculate streak
-                    const start = new Date(startDate);
-                    const today = new Date();
-                    start.setHours(0, 0, 0, 0);
-                    today.setHours(0, 0, 0, 0);
-                    
-                    const diffTime = today.getTime() - start.getTime();
-                    streakCount = Math.floor(
+                streakHistory.push({
+                    start: oldStart.toISOString().split('T')[0],
+                    end: oldEnd.toISOString().split('T')[0],
+                    days: streakCount
+                });
+                
+                // Update total days
+                totalDays += streakCount;
+                localStorage.setItem('totalDays', totalDays);
+                
+                // Update longest streak
+                if (streakCount > longestStreak) {
+                    longestStreak = streakCount;
+                    localStorage.setItem('longestStreak', longestStreak);
+                }
+                
+                // Save history
+                localStorage.setItem('streakHistory', JSON.stringify(streakHistory));
+            }
+        }
+        
+        // Handle edit date button click
+        function handleEditDate() {
+            const existingDate = startDate ? new Date(startDate).toISOString().split('T')[0] : '';
+            const newDate = prompt(`Enter your sobriety start date (YYYY-MM-DD):`, existingDate);
+            
+            if (newDate && isValidDate(newDate)) {
+                // Save current streak to history if it exists
+                saveCurrentStreakToHistory();
+                
+                // Set new start date
+                startDate = newDate;
+                localStorage.setItem('sobrietyStartDate', startDate);
+                
+                // Recalculate streak
+                calculateStreak();
+                
+                // Set a new random quote
+                setRandomQuote();
+                
+                // Update display
+                updateDisplay();
+            } else if (newDate) {
+                alert("Please enter a valid date in YYYY-MM-DD format.");
+            }
+        }
+        
+        // Handle reset button click
+        function handleReset() {
+            if (confirm("Are you sure you want to reset your streak? This will save your current streak to history.")) {
+                // Save current streak to history if it exists
+                saveCurrentStreakToHistory();
+                
+                // Reset start date to today
+                const today = new Date();
+                startDate = today.toISOString().split('T')[0];
+                localStorage.setItem('sobrietyStartDate', startDate);
+                
+                // Reset streak counter
+                streakCount = 0;
+                
+                // Set a new random quote
+                setRandomQuote();
+                
+                // Update display
+                updateDisplay();
+            }
+        }
+        
+        // Helper function to validate date format
+        function isValidDate(dateString) {
+            const regex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!regex.test(dateString)) return false;
+            
+            const date = new Date(dateString);
+            return date instanceof Date && !isNaN(date);
+        }
+        
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
