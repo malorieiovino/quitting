@@ -13,9 +13,9 @@ A beautiful, interactive sobriety tracker that you can embed in Notion, personal
 - 📱 Fully responsive design for all devices
 - 💾 Data saved locally in your browser
 
-## 🚀 Quick Setup (For Anyone)
+## 🚀 Quick Setup 
 
-### 1. Fork This Repository
+### 1. Fork This Repo
 
 1. Click the "Fork" button at the top of this GitHub repository
 2. This creates your own copy of the tracker that you can customize
@@ -37,7 +37,7 @@ A beautiful, interactive sobriety tracker that you can embed in Notion, personal
 3. Paste your GitHub Pages URL
 4. Click "Embed link"
 
-#### Method 2: Custom Size (Advanced)
+#### Method 2: Custom Size (More Advanced)
 1. In your Notion page, type `/code` and select "Code"
 2. Choose "HTML" as the language
 3. Paste the following code (replace `YOUR_URL` with your GitHub Pages URL):
